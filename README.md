@@ -136,6 +136,17 @@ pixels preserve the supplied export's clarity.
 
 ## Navigation
 
+The shared `SiteFooter` follows the desktop and mobile Figma footer designs,
+using the original local vector wordmark, social icons, and newsletter arrow.
+Its desktop typography shares the home sections' scale, inherited from the root
+layout. Mobile/tablet body text is 13.5px to match About, with 17.25px column
+headings and a 21.75px tagline. Supporting copy stays smaller.
+Static typed data lives in `src/lib/content/footer.ts`; social profile URLs are
+dummy destinations until the API is connected. Contact details consistently use
+the desktop homepage design. Newsletter submission validates the email locally
+and displays a coming-soon message; no subscription is saved yet. The Privacy
+Policy link points to `/privacy-policy`, whose page remains to be implemented.
+
 The shared `SiteHeader` sticks to the top of the viewport, with Holand Century
 text and locally exported SVGs. Desktop links use 18px text in an 80px header.
 Below 1024px, a 64px header shows the logo, search, and a hamburger trigger for a

@@ -17,10 +17,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main
-      id="main-content"
-      className="[--home-content-width:min(88.888889vw,calc((100svh_-_80px)*1280/830))] [--home-layout-unit:calc(var(--home-content-width)/1280)] [--home-type-unit:min(var(--home-layout-unit),1.1px,calc(.9px_+_.006944444vw))]"
-    >
+    <main id="main-content">
       <HomeHero content={homeHeroContent} />
       <AboutNabil content={aboutNabilContent} />
       <BigPicture content={bigPictureContent} />

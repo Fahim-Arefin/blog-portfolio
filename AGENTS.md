@@ -15,6 +15,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Use only the installed Sangira and Holand Century fonts. Replace other Figma fonts with Holand Century for body text and labels, or Sangira for serif display text.
 - Base homepage proportions and typography on the 1440px Figma design. Above 1440px, increase font sizes only slightly rather than scaling them directly with viewport width. Keep section containers aligned while retaining Figma's inset for The Big Picture.
 - Keep the hero heading larger than the About heading at every breakpoint. About and The Big Picture use 25% smaller typography on mobile/tablet (below `lg`) than their original mobile/tablet sizes; preserve the desktop Figma sizes.
+- Keep footer typography proportional to the other sections at every breakpoint. Use the shared desktop type scale; on mobile/tablet, footer body text matches About body text (13.5px), with smaller headings and supporting copy to preserve hierarchy.
 - Always consider SEO when planning, implementing, or changing the website. Apply relevant SEO best practices to content, semantic HTML, metadata, crawlability, URLs, structured data, and performance.
 - Keep section Server Actions in `src/lib/actions/`, grouped by section. Keep external API fetching functions in `src/lib/api/`.
 
