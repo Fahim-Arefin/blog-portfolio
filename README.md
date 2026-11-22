@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# Nabil Portfolio
 
-## Getting Started
+Next.js App Router, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Run `npm run lint` for ESLint,
+`npx tsc --noEmit` for type checking, and `npm run build` for a production build.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Folder structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+src/
+  app/                  # Routes, layouts, global CSS, and metadata route files
+    layout.tsx          # Root document and default metadata
+    page.tsx            # Home route
+    globals.css
+    favicon.ico
+  components/
+    ui/                 # Reusable buttons, inputs, and UI primitives
+    layout/             # Shared header, navigation, and footer
+    sections/           # Page sections, grouped by page as needed
+  config/               # Shared site settings and navigation configuration
+  lib/
+    actions/            # Section Server Actions, grouped by section
+    api/                # External API requests and response handling
+    seo/                # Shared metadata and structured data helpers
+  types/                # Types shared across features
+public/
+  images/               # Photos and static images
+  icons/                # Static icon assets
+```
 
-## Learn More
+The `@/` alias points to `src/`, e.g. `@/components/layout/site-header`.
+Configuration files, environment files, and `public/` stay at the project root.
+Folders with `.gitkeep` are reserved for future implementation.
 
-To learn more about Next.js, take a look at the following resources:
+## Component organization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Keep route files focused on composing sections and exporting route metadata.
+Use Server Components by default; add `"use client"` for browser interactions.
+Components used only by one route can live in that route's `_components/` folder.
+Shared components belong in `src/components/`. Keep feature-specific types beside
+their implementation; reserve `src/types/` for types used across features.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Future API integration
 
-## Deploy on Vercel
+- Put section Server Actions in `src/lib/actions/`, grouped by section, such as
+  `contact.ts` and `newsletter.ts`. Use `"use server"` in action modules and
+  validate inputs and authorization inside each action as appropriate.
+- Group external requests by resource in `src/lib/api/`, such as `projects.ts`
+  and `articles.ts`. Keep response types and validation near those functions.
+- Fetch SEO-relevant content in Server Components so it appears in rendered HTML.
+  Use client fetching for interactions that need it.
+- Keep credentials in root `.env.local`. Guard modules accessing secrets with
+  `import "server-only"`; never expose secrets through `NEXT_PUBLIC_` variables.
+- Choose caching and revalidation per resource according to freshness needs.
+  Consult installed Next.js docs before selecting APIs or enabling Cache
+  Components. No global caching policy is configured yet.
+- Check unsuccessful HTTP responses and validate external data before using it.
+- Add `src/app/api/<resource>/route.ts` when the browser or an external service
+  needs an endpoint. Server Components can call external APIs directly.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+No API endpoint, client library, or environment variable is required yet.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## SEO conventions
+
+Use the Next.js Metadata API in layouts and pages, with `generateMetadata` when
+metadata depends on API content. Shared helpers belong in `src/lib/seo/`.
+Add `robots.ts`, `sitemap.ts`, and social preview files under `src/app/` once the
+production domain and public routes are known. Use verified site information for
+canonical URLs and structured data.
+
+Use semantic HTML, descriptive links, appropriate image alternative text, and
+optimized images and fonts. Replace the starter page and its default metadata as
+real site content is implemented.
+
+## Version-specific documentation
+
+Follow `AGENTS.md`. Matching Next.js documentation lives in
+`node_modules/next/dist/docs/`.
