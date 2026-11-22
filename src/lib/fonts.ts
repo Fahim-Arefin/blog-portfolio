@@ -21,6 +21,11 @@ export const holandCentury = localFont({
       weight: "700",
       style: "normal",
     },
+    {
+      path: "../assets/fonts/holand-century-extrabold.woff2",
+      weight: "800",
+      style: "normal",
+    },
   ],
   variable: "--font-holand-century",
   display: "swap",

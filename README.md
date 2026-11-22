@@ -81,6 +81,26 @@ Use semantic HTML, descriptive links, appropriate image alternative text, and
 optimized images and fonts. Replace the starter page and its default metadata as
 real site content is implemented.
 
+## Navigation
+
+The shared `SiteHeader` sticks to the top of the viewport, with Holand Century
+text and locally exported SVGs. Desktop links use 18px text in an 80px header.
+Below 1024px, a 64px header shows the logo, search, and a hamburger trigger for a
+right-hand sheet containing every page link. The reusable Sheet follows the
+shadcn composition pattern using Radix Dialog, with a backdrop, focus trapping,
+scroll locking, Escape dismissal, and focus restoration. It closes on link
+selection and when switching to the desktop breakpoint.
+
+Mobile links use 18px text. Current page links use the real Holand ExtraBold
+weight (800), an underline, and `aria-current="page"`; the sheet also adds a soft
+background. Matching nested routes highlight their parent link.
+Search filters the configured page list locally; it does not fetch API content.
+
+Destinations are centralized in `src/config/navigation.ts`. The Contents,
+Testimonials, Get my Assistance, and Get In Touch routes are planned destinations;
+their page content still needs to be implemented. Prefetching is disabled for
+these links until those routes exist.
+
 ## Fonts
 
 `src/lib/fonts.ts` loads self-hosted WOFF2 assets with `next/font/local` and
@@ -92,9 +112,11 @@ Holand Century is the default body font.
 | `font-sangira` or `font-display` with `font-normal` | Sangira Regular (400) |
 | `font-holand` or `font-sans` with `font-normal` | Holand Century Regular (400) |
 | `font-holand` or `font-sans` with `font-bold` | Holand Century Bold (700) |
+| `font-holand` or `font-sans` with `font-extrabold` | Holand Century ExtraBold (800) |
 
-Only these three font files are included to match the main Figma typography.
-Sangira has no supplied bold style. Additional weights and italics are not loaded.
+Four WOFF2 files are included: Sangira Regular and Holand Century Regular, Bold,
+and ExtraBold. Sangira has no supplied bold style. Other weights and italics are
+not loaded.
 
 ## Version-specific documentation
 

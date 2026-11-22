@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { holandCentury, sangira } from "@/lib/fonts";
+import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,7 +14,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${holandCentury.variable} ${sangira.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }
