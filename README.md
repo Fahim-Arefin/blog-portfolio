@@ -81,6 +81,59 @@ Use semantic HTML, descriptive links, appropriate image alternative text, and
 optimized images and fonts. Replace the starter page and its default metadata as
 real site content is implemented.
 
+## Home hero
+
+`src/components/sections/home/hero.tsx` is a Server Component styled entirely with
+Tailwind utilities. Its hardcoded copy, statistics, and actions live in
+`src/lib/content/home.ts`. Replace that object with API data matching
+`HomeHeroContent` when the backend is available. The home page exports metadata,
+uses one visible H1, and renders the hero content in the initial HTML.
+
+Original portrait and texture files live in `public/images/home/`. The portrait
+uses `next/image`, eager loading, and high fetch priority. Hero images serve their
+full-resolution original files without another lossy compression or resize pass.
+Its crop follows the image transform from Figma; the original source stays intact.
+The decorative texture is exported directly from Figma with its image adjustments
+and gradient included. It uses an SVG clip outline on desktop and rounded panels
+on mobile; mobile statistics crop the same light upper area as the desktop stats
+panel. No extra color filters are applied. The portrait uses Figma's original
+1708-by-2560 PNG instead of the compressed local WebP. Styling and responsive
+behavior use Tailwind utilities.
+The desktop composition starts at 1024px, including laptop screens. Its scene
+uses up to 88.89% of the viewport width without a large-screen width cap, reduced
+when needed to fit the entire hero below the 80px sticky header. Its width and
+vertical spacing share the same scale, constrained by both viewport dimensions.
+Desktop top/bottom padding is 24px/40px at the reference scale, reduced from
+40px/80px.
+Scene geometry follows the 1280-by-766 Figma artwork using percentages and
+container units. All three home sections share a container width; The Big
+Picture keeps its additional Figma inset. Typography uses the 1440px design as
+its reference, shrinking to fit smaller desktop compositions and increasing
+gently above 1440px, capped at 10% above the reference sizes. About body text is
+20px at the reference size. Only Sangira and Holand Century are used, including
+where the Figma body font differs.
+Below 1024px, About and The Big Picture use typography reduced by 25% from the
+initial mobile/tablet sizes. The About heading stays smaller than the hero H1 at
+every breakpoint. The mobile hero readability gradient fades from transparent
+at the photo panel's top, avoiding a hard rectangular overlay edge.
+CTA backgrounds stay fixed on hover. The arrow exits right, re-enters from the
+left, and returns to its starting position through a Tailwind animation utility.
+Keyboard focus uses the same motion; reduced-motion preferences disable it.
+The light and dark arrow images in `public/icons/` are the original Figma exports.
+
+## About and The Big Picture
+
+`AboutNabil` and `BigPicture` follow the homepage hero. Their static data and
+TypeScript shapes live in `src/lib/content/home-sections.ts`; supply API data with
+the same shape later. Both are Server Components using Tailwind utilities, H2
+headings, and definition lists. Text is included in the initial server-rendered
+HTML, with no client JavaScript needed for these sections.
+
+The floating image is stored locally at
+`public/images/home/nabil-hossain-discussion.png`. Its intrinsic dimensions reserve
+layout space; lazy loading defers this below-the-fold image, and its original
+pixels preserve the supplied export's clarity.
+
 ## Navigation
 
 The shared `SiteHeader` sticks to the top of the viewport, with Holand Century

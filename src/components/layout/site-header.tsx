@@ -12,9 +12,9 @@ export function SiteHeader() {
         <nav aria-label="Primary navigation" className={styles.navigation}>
           <ContentsMenu />
           <NavLink className={`${styles.link} ${styles.testimonials}`} href={navigation[1].href} prefetch={false}>Testimonials</NavLink>
-          <NavLink href="/" aria-label="Nabil Hasan — Home" className={styles.brand}>
+          <NavLink href="/" aria-label="Nabil Hossain — Home" className={styles.brand}>
             {/* eslint-disable-next-line @next/next/no-img-element -- Original vector wordmark, served locally. */}
-            <img src="/images/brand/nabil-logo.svg" width={78.62} height={30} alt="Nabil Hasan" />
+            <img src="/images/brand/nabil-logo.svg" width={78.62} height={30} alt="Nabil Hossain" />
           </NavLink>
           <NavLink className={`${styles.link} ${styles.assistance}`} href={navigation[2].href} prefetch={false}>Get my Assistance</NavLink>
           <NavLink className={`${styles.link} ${styles.contact}`} href={navigation[3].href} prefetch={false}>Get In Touch</NavLink>

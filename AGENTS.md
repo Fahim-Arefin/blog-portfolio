@@ -10,6 +10,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Project priorities
 
+- Use [Try Blog Design](https://www.figma.com/design/ZWzOSaz4Vex5MVARkauhhf/Try-Blog-Design?node-id=0-1) as the current design reference for all future UI work. Figma file key: `ZWzOSaz4Vex5MVARkauhhf`; main page: `0:1`. This replaces the previous `ysDMbXpDZdVon8XpVsOb11` design reference. Apply the user's subsequent design overrides alongside this reference.
+- Use Tailwind CSS utilities for new UI styling rather than adding CSS modules.
+- Use only the installed Sangira and Holand Century fonts. Replace other Figma fonts with Holand Century for body text and labels, or Sangira for serif display text.
+- Base homepage proportions and typography on the 1440px Figma design. Above 1440px, increase font sizes only slightly rather than scaling them directly with viewport width. Keep section containers aligned while retaining Figma's inset for The Big Picture.
+- Keep the hero heading larger than the About heading at every breakpoint. About and The Big Picture use 25% smaller typography on mobile/tablet (below `lg`) than their original mobile/tablet sizes; preserve the desktop Figma sizes.
 - Always consider SEO when planning, implementing, or changing the website. Apply relevant SEO best practices to content, semantic HTML, metadata, crawlability, URLs, structured data, and performance.
 - Keep section Server Actions in `src/lib/actions/`, grouped by section. Keep external API fetching functions in `src/lib/api/`.
 
