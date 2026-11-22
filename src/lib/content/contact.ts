@@ -1,13 +1,6 @@
-import type { HeroImage, HomeHeroContent } from "./home";
+import type { PageHeroContent } from "./page-hero";
 
-export type ContactHeroContent = {
-  heading: string;
-  introduction: string;
-  actions: HomeHeroContent["actions"];
-  background: HeroImage;
-  mobileBackground: HeroImage;
-  image: HeroImage;
-};
+export type ContactHeroContent = PageHeroContent;
 
 // Static Figma copy and local assets; replace with API content later.
 export const contactHeroContent: ContactHeroContent = {
@@ -19,10 +12,10 @@ export const contactHeroContent: ContactHeroContent = {
   ],
   background: { src: "/images/contact/hero-bulbs.png", alt: "", width: 1280, height: 766 },
   mobileBackground: { src: "/images/contact/hero-bulbs-mobile.png", alt: "", width: 1295, height: 766 },
-  image: { src: "/images/contact/fist-bump-source.jpg", alt: "Two people greeting each other with a fist bump", width: 4096, height: 2731 },
+  image: { src: "/images/contact/fist-bump-source.jpg", alt: "Two people greeting each other with a fist bump", width: 4096, height: 2731, position: "29.734% center" },
 };
 
-export const contactQuote = '"True power is not measured by who you control, but by who you are connected to and how deeply you uplift one another."';
+export { connectionQuote as contactQuote } from "./quotes";
 
 export type ContactDetailsContent = {
   eyebrow: string;

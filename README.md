@@ -239,3 +239,24 @@ Testimonial validation uses `useActionState` errors below each field in red.
 The form disables native validation popups with `noValidate`, while retaining
 required/type attributes for semantics. Invalid submissions focus the first
 invalid control, including the rating group.
+
+## Contents hero
+
+`/contents` uses the shared Server Component `PageHero`, also used by Get In Touch.
+Its typed static content lives in `src/lib/content/contents.ts`, ready for later
+API data. The original Figma book artwork and book-and-mug photograph are stored
+under `public/images/contents/`. A responsive picture selects either desktop or
+mobile background artwork, avoiding duplicate downloads. The About Me action
+links to the homepage About section and reuses the shared arrow animation and
+smaller mobile/tablet button sizes. The route includes page-specific metadata
+and one H1; Figma's placeholder description remains until final copy is provided.
+
+## Testimonials and assistance heroes
+
+`/testimonials` and `/get-my-assistance` render shared `PageHero` and `QuoteMarquee`
+components with page-specific metadata and one H1 each. Testimonials reuses the
+identical book imagery verified in Figma. Assistance uses original handshake
+artwork and a high-resolution sunset photograph with Figma's crop. Static data
+lives in `src/lib/content/testimonials-page.ts`, `assistance.ts`, and `quotes.ts`.
+The full-width quote strip supports pause, hover/focus pausing, and reduced motion.
+Repeated quote groups keep the scrolling track filled on wider screens.
