@@ -209,3 +209,33 @@ content module for the later API integration.
 Contact filmstrip cards share the same hover/focus treatment with platform colors: LinkedIn blue, Facebook blue, WhatsApp green, and X black. Phone and email use the design's teal accent.
 Background, border, and icon crossfade/scale transitions use a synchronized 500ms
 easing curve, with transitions disabled for reduced-motion preferences.
+
+## Share Your Testimonial
+
+The homepage testimonial section is a Server Component. Its interactive form uses
+React `useActionState` and the Server Action at
+`src/lib/actions/testimonials/submit-testimonial.ts`. Text and consent are
+validated with Zod on the server, with inline form-state errors,
+pending states, and retained entries after failures. Public submissions require
+explicit publication consent. No review is automatically published.
+
+As requested, a valid submission currently logs its validated fields and portrait
+metadata to the server console only. It is not stored and no external request is
+made. Replace that log inside the action with the external POST API when ready;
+external API request helpers belong in `src/lib/api/`.
+
+The optional portrait accepts JPEG, PNG, or WebP, with a strict 1,000,000-byte
+(1 MB) input limit enforced by the browser and server. `react-easy-crop` 6.2.5 is
+loaded only after choosing an image. Cropping supports panning and zoom, with a
+512px square preview, cancellation, and removal. The server independently checks
+the decoded image format, rejects animations and images over 16 megapixels,
+then re-encodes the pixels to a 512px WebP without embedded metadata. Image bytes
+are never written to the console. The Server Action request cap is 2 MB to leave
+room for multipart overhead; the image itself remains limited to 1 MB.
+
+Run `npm test` for schema, upload, and Server Action regression checks.
+
+Testimonial validation uses `useActionState` errors below each field in red.
+The form disables native validation popups with `noValidate`, while retaining
+required/type attributes for semantics. Invalid submissions focus the first
+invalid control, including the rating group.

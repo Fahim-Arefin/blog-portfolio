@@ -4,6 +4,7 @@ import { homeHeroContent } from "@/lib/content/home";
 import { AboutNabil } from "@/components/sections/home/about-nabil";
 import { BigPicture } from "@/components/sections/home/big-picture";
 import { aboutNabilContent, bigPictureContent } from "@/lib/content/home-sections";
+import { ShareTestimonial } from "@/components/sections/home/testimonial";
 
 const title = "Nabil Hossain | The Improvement Specialist";
 const description = "Meet Nabil Hossain and explore his experience in marine engineering, leadership, research and teaching, plus his mission to maximize impact and benefit others.";
@@ -21,6 +22,7 @@ export default function Home() {
       <HomeHero content={homeHeroContent} />
       <AboutNabil content={aboutNabilContent} />
       <BigPicture content={bigPictureContent} />
+      <ShareTestimonial />
     </main>
   );
 }
