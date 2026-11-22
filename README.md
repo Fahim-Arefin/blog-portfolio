@@ -31,6 +31,7 @@ src/
     api/                # External API requests and response handling
     seo/                # Shared metadata and structured data helpers
   types/                # Types shared across features
+  assets/fonts/         # Local WOFF2 font files
 public/
   images/               # Photos and static images
   icons/                # Static icon assets
@@ -79,6 +80,21 @@ canonical URLs and structured data.
 Use semantic HTML, descriptive links, appropriate image alternative text, and
 optimized images and fonts. Replace the starter page and its default metadata as
 real site content is implemented.
+
+## Fonts
+
+`src/lib/fonts.ts` loads self-hosted WOFF2 assets with `next/font/local` and
+`display: "swap"`. The root layout exposes both families throughout the app.
+Holand Century is the default body font.
+
+| Tailwind classes | Font |
+| --- | --- |
+| `font-sangira` or `font-display` with `font-normal` | Sangira Regular (400) |
+| `font-holand` or `font-sans` with `font-normal` | Holand Century Regular (400) |
+| `font-holand` or `font-sans` with `font-bold` | Holand Century Bold (700) |
+
+Only these three font files are included to match the main Figma typography.
+Sangira has no supplied bold style. Additional weights and italics are not loaded.
 
 ## Version-specific documentation
 
