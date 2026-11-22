@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { HeroActions } from "@/components/shared/hero-actions";
 import type { HomeHeroContent } from "@/lib/content/home";
 
 export function HomeHero({ content }: { content: HomeHeroContent }) {
@@ -71,30 +71,7 @@ export function HomeHero({ content }: { content: HomeHeroContent }) {
             <p className="mt-6 max-w-[766px] font-holand text-[15px] leading-[1.25] font-normal tracking-[0.05em] sm:text-[18px] lg:mt-[2.5cqw] lg:w-[81.230117%] lg:max-w-none lg:text-[calc(23*var(--home-type-unit))]">
               {content.introduction}
             </p>
-            <div className="mt-8 hidden flex-wrap gap-10 lg:mt-[2.5cqw] lg:flex lg:gap-[3.125cqw]">
-              {content.actions.map(({ label, href, tone }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  prefetch={false}
-                  className="group inline-flex min-h-[55px] items-stretch gap-1 font-holand text-[18px] leading-[1.25] font-bold tracking-[0.05em] focus-visible:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d1317] lg:min-h-[4.296875cqw] lg:gap-[.3125cqw] lg:text-[calc(18*var(--home-type-unit))]"
-                >
-                  <span aria-hidden="true" className={`grid size-[55px] shrink-0 place-items-center overflow-hidden rounded-tl-2xl rounded-tr-lg rounded-br-lg rounded-bl-sm text-2xl font-normal lg:size-[4.296875cqw] lg:rounded-tl-[1.25cqw] lg:rounded-tr-[.625cqw] lg:rounded-br-[.625cqw] lg:rounded-bl-[.3125cqw] ${tone === "dark" ? "bg-[#0d1317] text-[#faf7f5]" : "bg-[#c6d7df] text-[#0d1317]"}`}>
-                    <span className="inline-flex w-[18px] items-center motion-safe:group-hover:animate-arrow-return motion-safe:group-focus-visible:animate-arrow-return lg:w-[1.40625cqw]">
-                      <Image
-                        src={tone === "dark" ? "/icons/arrow-right-light.png" : "/icons/arrow-right-dark.png"}
-                        alt=""
-                        width={tone === "dark" ? 512 : 832}
-                        height={tone === "dark" ? 316 : 512}
-                        unoptimized
-                        className="block h-auto w-full"
-                      />
-                    </span>
-                  </span>
-                  <span className={`flex items-center rounded-tl-sm rounded-tr-sm rounded-br-2xl rounded-bl-sm px-6 py-4 lg:rounded-tl-[.3125cqw] lg:rounded-tr-[.3125cqw] lg:rounded-br-[1.25cqw] lg:rounded-bl-[.3125cqw] lg:px-[1.875cqw] lg:py-[1.25cqw] ${tone === "dark" ? "bg-[#0d1317] text-[#faf7f5]" : "bg-[#c6d7df] text-[#0d1317]"}`}>{label}</span>
-                </Link>
-              ))}
-            </div>
+            <HeroActions actions={content.actions} />
           </div>
         </div>
       </div>

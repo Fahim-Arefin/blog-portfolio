@@ -186,3 +186,13 @@ not loaded.
 
 Follow `AGENTS.md`. Matching Next.js documentation lives in
 `node_modules/next/dist/docs/`.
+
+## Get In Touch hero
+
+`/get-in-touch` renders the Figma hero as a Server Component with route metadata,
+a single H1, and static typed content in `src/lib/content/contact.ts`. The bulb
+artwork preserves Figma's exported mask and color adjustments; the fist-bump
+image uses the original 4096px source with the design's crop. Mobile/tablet use
+a stacked image composition. `HeroActions` is shared with the home hero and
+preserves the existing arrow animation, focus styles, and reduced-motion support.
+The visible description remains Figma's placeholder copy pending final/API text.
