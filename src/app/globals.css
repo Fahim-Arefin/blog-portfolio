@@ -37,3 +37,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-holand-century), Arial, sans-serif;
 }
+
+@keyframes contact-marquee {
+  to { transform: translateX(-50%); }
+}

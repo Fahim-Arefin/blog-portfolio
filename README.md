@@ -196,3 +196,16 @@ image uses the original 4096px source with the design's crop. Mobile/tablet use
 a stacked image composition. `HeroActions` is shared with the home hero and
 preserves the existing arrow animation, focus styles, and reduced-motion support.
 The visible description remains Figma's placeholder copy pending final/API text.
+
+The contact hero is followed by a looping quote marquee and a responsive contact
+filmstrip. The marquee has a pause control, pauses on hover/focus, and displays
+the complete static quote for reduced-motion preferences. Its decorative copies
+are hidden from screen readers. Contact cards use local Figma SVGs and semantic
+links; LinkedIn reveals its blue card and enlarged white icon on hover or keyboard
+focus. Text follows the shared desktop scale and the smaller mobile/tablet sizes.
+Contact quote, placeholder copy, and dummy social links live in the static contact
+content module for the later API integration.
+
+Contact filmstrip cards share the same hover/focus treatment with platform colors: LinkedIn blue, Facebook blue, WhatsApp green, and X black. Phone and email use the design's teal accent.
+Background, border, and icon crossfade/scale transitions use a synchronized 500ms
+easing curve, with transitions disabled for reduced-motion preferences.
